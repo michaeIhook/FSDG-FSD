@@ -14,7 +14,7 @@ local GlobalTweenInfo = TweenInfo.new(TweenTime)
 local AlteredTweenInfo = TweenInfo.new(TweenTime, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
 
 local DropShadowID = "rbxassetid://297774371"
-local DropShadowTransparency = 1
+local DropShadowTransparency = 0.3
 
 local IconLibraryID = "rbxassetid://3926305904"
 local IconLibraryID2 = "rbxassetid://3926307971"
@@ -66,6 +66,19 @@ local function DropdownIcon(ButtonOrNot)
 	NewDropdownIcon.Position = UDim2.new(1,-18,0,2)
 	NewDropdownIcon.ZIndex = Level
 	return NewDropdownIcon
+end
+
+local function SearchIcon(ButtonOrNot)
+	local NewSearchIcon = Instance.new(ButtonOrNot and "ImageButton" or "ImageLabel")
+	NewSearchIcon.Name = "SearchIcon"
+	NewSearchIcon.BackgroundTransparency = 1
+	NewSearchIcon.Image = IconLibraryID
+	NewSearchIcon.ImageRectOffset = Vector2.new(964,324)
+	NewSearchIcon.ImageRectSize = Vector2.new(36,36)
+	NewSearchIcon.Size = UDim2.new(0,16,0,16)
+	NewSearchIcon.Position = UDim2.new(0,2,0,2)
+	NewSearchIcon.ZIndex = Level
+	return NewSearchIcon
 end
 
 local function RoundBox(CornerRadius, ButtonOrNot)
@@ -290,7 +303,7 @@ function UILibrary.Load(GUITitle)
 					if Button:IsA("GuiObject") then
 						local IsButton = string.find(Button.Name:lower(), PageContainer.Name:lower())
 						local Button2 = Button:FindFirstChild(Button.Name.."Button")
-						Tween(Button, {ImageColor3 = IsButton and Color3.fromRGB(192,192,192) or Color3.fromRGB(192,192,192)})
+						Tween(Button, {ImageColor3 = IsButton and Color3.fromRGB(50,50,50) or Color3.fromRGB(40,40,40)})
 						Tween(Button2, {TextTransparency = IsButton and 0 or 0.5})
 					end
 				end
