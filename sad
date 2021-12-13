@@ -270,7 +270,7 @@ function UILibrary.Load(GUITitle)
 	local TabLibrary = {}
 	
 	function TabLibrary.AddPage(PageTitle, SearchBarIncluded)
-		local SearchBarIncluded = (SearchBarIncluded == false) and true or SearchBarIncluded
+		local SearchBarIncluded = (SearchBarIncluded == nil) and true or SearchBarIncluded
 		
 		local PageContainer = RoundBox(5)
 		PageContainer.Name = PageTitle
