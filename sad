@@ -68,18 +68,6 @@ local function DropdownIcon(ButtonOrNot)
 	return NewDropdownIcon
 end
 
-local function SearchIcon(ButtonOrNot)
-	local NewSearchIcon = Instance.new(ButtonOrNot and "ImageButton" or "ImageLabel")
-	NewSearchIcon.Name = "SearchIcon"
-	NewSearchIcon.BackgroundTransparency = 1
-	NewSearchIcon.Image = IconLibraryID
-	NewSearchIcon.ImageRectOffset = Vector2.new(964,324)
-	NewSearchIcon.ImageRectSize = Vector2.new(36,36)
-	NewSearchIcon.Size = UDim2.new(0,16,0,16)
-	NewSearchIcon.Position = UDim2.new(0,2,0,2)
-	NewSearchIcon.ZIndex = Level
-	return NewSearchIcon
-end
 
 local function RoundBox(CornerRadius, ButtonOrNot)
 	local NewRoundBox = Instance.new(ButtonOrNot and "ImageButton" or "ImageLabel")
