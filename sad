@@ -14,7 +14,7 @@ local GlobalTweenInfo = TweenInfo.new(TweenTime)
 local AlteredTweenInfo = TweenInfo.new(TweenTime, Enum.EasingStyle.Sine, Enum.EasingDirection.Out)
 
 local DropShadowID = "rbxassetid://297774371"
-local DropShadowTransparency = 0.3
+local DropShadowTransparency = 1
 
 local IconLibraryID = "rbxassetid://3926305904"
 local IconLibraryID2 = "rbxassetid://3926307971"
@@ -66,19 +66,6 @@ local function DropdownIcon(ButtonOrNot)
 	NewDropdownIcon.Position = UDim2.new(1,-18,0,2)
 	NewDropdownIcon.ZIndex = Level
 	return NewDropdownIcon
-end
-
-local function SearchIcon(ButtonOrNot)
-	local NewSearchIcon = Instance.new(ButtonOrNot and "ImageButton" or "ImageLabel")
-	NewSearchIcon.Name = "SearchIcon"
-	NewSearchIcon.BackgroundTransparency = 1
-	NewSearchIcon.Image = IconLibraryID
-	NewSearchIcon.ImageRectOffset = Vector2.new(964,324)
-	NewSearchIcon.ImageRectSize = Vector2.new(36,36)
-	NewSearchIcon.Size = UDim2.new(0,16,0,16)
-	NewSearchIcon.Position = UDim2.new(0,2,0,2)
-	NewSearchIcon.ZIndex = Level
-	return NewSearchIcon
 end
 
 local function RoundBox(CornerRadius, ButtonOrNot)
@@ -343,40 +330,6 @@ function UILibrary.Load(GUITitle)
 		DisplayPadding.PaddingRight = UDim.new(0,5)
 		DisplayPadding.Parent = DisplayPage
 		
-		if SearchBarIncluded then
-			local SearchBarContainer = RoundBox(5)
-			SearchBarContainer.Name = "SearchBar"
-			SearchBarContainer.ImageColor3 = Color3.fromRGB(35,35,35)
-			SearchBarContainer.Size = UDim2.new(1,0,0,20)
-			SearchBarContainer.Parent = DisplayPage
-			
-			local SearchBox = TextBox("Search...")
-			SearchBox.Name = "SearchInput"
-			SearchBox.Position = UDim2.new(0,20,0,0)
-			SearchBox.Size = UDim2.new(1,-20,1,0)
-			SearchBox.TextTransparency = 0.5
-			SearchBox.TextXAlignment = Enum.TextXAlignment.Left
-			SearchBox.Parent = SearchBarContainer
-			
-			local SearchIcon = SearchIcon()
-			SearchIcon.Parent = SearchBarContainer
-			
-			SearchBox:GetPropertyChangedSignal("Text"):Connect(function()
-				local NewValue = SearchBox.Text
-				
-				for _, Element in next, DisplayPage:GetChildren() do
-					if Element:IsA("Frame") then
-						if not string.find(Element.Name:lower(), "label") then
-							if string.find(Element.Name:lower(), NewValue:lower()) then
-								Element.Visible = true
-							else
-								Element.Visible = false
-							end
-						end
-					end
-				end
-			end)
-		end
 		
 		local PageLibrary = {}
 		
